@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+    />
+    <script>
+      const _customElementsDefine = window.customElements.define;
+      window.customElements.define = (name, cl, conf) => {
+        if (!customElements.get(name)) {
+          _customElementsDefine.call(window.customElements, name, cl, conf);
+        } else {
+          // console.warn(`${name} has been defined twice`);
+        }
+      };
+    </script>
+    <script src="//unpkg.com/progress-ring-component/dist/progressring.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <mwc-formfield label="CPU">
+        <mwc-checkbox id="cpu"></mwc-checkbox>
+      </mwc-formfield>
+      <mwc-formfield label="Memory">
+        <mwc-checkbox id="memory"></mwc-checkbox>
+      </mwc-formfield>
+      <mwc-formfield label="Disk">
+        <mwc-checkbox id="disk"></mwc-checkbox>
+      </mwc-formfield>
+
+      <div id="widget-wrapper"></div>
+    </div>
+    <script src="src/index.ts"></script>
+  </body>
+</html>
